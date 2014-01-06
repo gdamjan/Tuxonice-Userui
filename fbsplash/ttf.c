@@ -27,8 +27,7 @@
 #include <assert.h>
 
 #include <ft2build.h>
-#include <freetype/ftoutln.h>
-#include <freetype/ttnameid.h>
+#include FT_FREETYPE_H
 
 #include "splash.h"
 
