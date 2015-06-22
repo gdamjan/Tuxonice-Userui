@@ -45,7 +45,7 @@ void render_icon(icon *ticon, u8 *target)
 	}
 }
 
-inline void put_pixel (u8 a, u8 r, u8 g, u8 b, u8 *src, u8 *dst, u8 add)
+void put_pixel (u8 a, u8 r, u8 g, u8 b, u8 *src, u8 *dst, u8 add)
 {
 	if (fb_opt) {
 		if (a != 255) {
