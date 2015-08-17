@@ -1,8 +1,7 @@
 #ifndef _TTF_H
 #define _TTF_H
 #include <ft2build.h>
-#include <freetype/ftoutln.h>
-#include <freetype/ttnameid.h>
+#include FT_FREETYPE_H
 
 #define CACHED_METRICS  0x10
 #define CACHED_BITMAP   0x01
