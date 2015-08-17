@@ -1,3 +1,10 @@
+tuxonice-userui (1.1-2) stable; urgency=medium
+
+  * Fix a number of compilation warnings and errors that have
+    developed over time. 
+
+ -- Nigel Cunningham <nigel@nigel-WA50SCQ>  Tue, 18 Aug 2015 07:16:17 +1000
+
 tuxonice-userui (1.1-2~exp1) experimental; urgency=low
 
   * Upload to experimental.
