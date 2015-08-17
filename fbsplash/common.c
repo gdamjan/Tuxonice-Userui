@@ -217,12 +217,12 @@ int do_config(unsigned char origin)
 
 void vt_cursor_disable(int fd)
 {
-	write(fd, "\e[?25l\e[?1c",11);
+	if (write(fd, "\e[?25l\e[?1c",11)) do {} while(0);
 }
 
 void vt_cursor_enable(int fd)
 {
-	write(fd, "\e[?25h\e[?0c",11);
+	if (write(fd, "\e[?25h\e[?0c",11)) do {} while(0);
 }
 
 int open_fb()

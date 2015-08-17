@@ -37,18 +37,19 @@ static int cur_x = -1, cur_y = -1;
 
 static int vcsa_fd = -1;
 
-static inline void clear_display() { write(1, "\033[2J", 4); }
-static inline void reset_display() { write(1, "\033c", 2); }
-static inline void clear_to_eol() { write(1, "\033K", 2); }
-static inline void hide_cursor() { write(1, "\033[?25l\033[?1c", 11); }
-static inline void show_cursor() { write(1, "\033[?25h\033[?0c", 11); }
+static inline void clear_display() { if (write(1, "\033[2J", 4)) do {} while(0); }
+static inline void reset_display() { if (write(1, "\033c", 2)) do {} while(0); }
+static inline void clear_to_eol() { if (write(1, "\033K", 2)) do {} while(0); }
+static inline void hide_cursor() { if (write(1, "\033[?25l\033[?1c", 11)) do {} while(0); }
+static inline void show_cursor() { if (write(1, "\033[?25h\033[?0c", 11)) do {} while(0); }
 static inline void move_cursor_to(int c, int r) { printf("\033[%d;%dH", r, c); }
 
 static void flush_scrollback()
 {
 	int i;
 	for (i = 0; i <= video_num_lines; i++)
-		write(1, "\n", 1);
+		if (write(1, "\n", 1)) do {
+                } while(0);
 }
 
 static int update_cursor_pos(void)
