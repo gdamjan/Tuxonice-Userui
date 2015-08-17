@@ -9,6 +9,7 @@
  *
  */
 
+#include <stdio.h>
 #include <libmng.h>
 #include <sys/time.h>
 #include <time.h>
