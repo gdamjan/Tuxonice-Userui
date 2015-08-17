@@ -234,7 +234,7 @@ int is_png(char *filename)
 	if (!fp)
 		return -1;
 
-	if (fread(header, 1, 8, fp)) {
+	if (!fread(header, 1, 8, fp)) {
             printk("Can't read png header.\n");
         };
 
