@@ -52,8 +52,8 @@ static int running = 0;
 static int need_cleanup = 0;
 static int safe_to_exit = 1;
 static volatile int need_loglevel_change = 0;
-static __uint32_t debugging_enabled = 0;
-static __uint32_t powerdown_method = 0;
+static uint32_t debugging_enabled = 0;
+static uint32_t powerdown_method = 0;
 static int console_fd = -1;
 
 /* We remember the last header that was (or could have been) displayed for
@@ -65,10 +65,10 @@ char software_suspend_version[32];
 int can_use_escape = 0;
 
 static FILE *printk_f = NULL;
-static __uint32_t saved_console_loglevel = -1;
-volatile __uint32_t console_loglevel = 1;
-volatile __uint32_t suspend_action = 0;
-volatile __uint32_t suspend_debug = 0;
+static uint32_t saved_console_loglevel = -1;
+volatile uint32_t console_loglevel = 1;
+volatile uint32_t suspend_action = 0;
+volatile uint32_t suspend_debug = 0;
 
 volatile int resuming = 0;
 
@@ -795,7 +795,7 @@ static void open_netlink() {
 }
 
 static int send_ready() {
-	__uint32_t version = SUSPEND_USERUI_INTERFACE_VERSION;
+	uint32_t version = SUSPEND_USERUI_INTERFACE_VERSION;
 
 	safe_to_exit = 0;
 
@@ -917,20 +917,20 @@ static void message_loop() {
 				active_ops->update_progress(msg->a, msg->b, msg->text);
 				break;
 			case USERUI_MSG_GET_STATE:
-				suspend_action = *(__uint32_t*)NLMSG_DATA(nlh);
+				suspend_action = *(uint32_t*)NLMSG_DATA(nlh);
 				break;
 			case USERUI_MSG_GET_DEBUG_STATE:
-				suspend_debug = *(__uint32_t*)NLMSG_DATA(nlh);
+				suspend_debug = *(uint32_t*)NLMSG_DATA(nlh);
 				break;
 			case USERUI_MSG_GET_LOGLEVEL:
-				console_loglevel = *(__uint32_t*)NLMSG_DATA(nlh);
+				console_loglevel = *(uint32_t*)NLMSG_DATA(nlh);
 				set_console_loglevel(0);
 				break;
 			case USERUI_MSG_IS_DEBUGGING:
-				debugging_enabled = *(__uint32_t *)NLMSG_DATA(nlh);
+				debugging_enabled = *(uint32_t *)NLMSG_DATA(nlh);
 				break;
 			case USERUI_MSG_GET_POWERDOWN_METHOD:
-				powerdown_method = *(__uint32_t *)NLMSG_DATA(nlh);
+				powerdown_method = *(uint32_t *)NLMSG_DATA(nlh);
 				break;
 			case USERUI_MSG_CLEANUP:
 				active_ops->cleanup();

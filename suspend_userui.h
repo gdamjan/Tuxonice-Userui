@@ -3,9 +3,7 @@
 
 #define SUSPEND_USERUI_INTERFACE_VERSION 8
 
-#ifdef __KLIBC__
-#define __uint32_t __u32
-#endif
+#include <stdint.h>
 
 enum {
 	USERUI_MSG_BASE = 0x10,
@@ -39,7 +37,7 @@ enum {
 };
 
 struct userui_msg_params {
-	__uint32_t a, b, c, d;
+	uint32_t a, b, c, d;
 	char text[255];
 };
 

@@ -229,7 +229,7 @@ static void text_loglevel_change()
  * Returns:	Unsigned long: The next value where status needs to be updated.
  * 		This is to reduce unnecessary calls to text_update_progress.
  */
-void text_update_progress(__uint32_t value, __uint32_t maximum, char *msg)
+void text_update_progress(uint32_t value, uint32_t maximum, char *msg)
 {
 	int bitshift = generic_fls(maximum) - 16, i;
 	int msg_len = msg ? strlen(msg) : 0;
@@ -250,11 +250,11 @@ void text_update_progress(__uint32_t value, __uint32_t maximum, char *msg)
 	 * (and shouldn't need it - anyone got screen resolution
 	 * of 65536 pixels or more?) */
 	if (bitshift > 0) {
-		__uint32_t temp_maximum = maximum >> bitshift;
-		__uint32_t temp_value = value >> bitshift;
-		barposn = (__uint32_t) (temp_value * barwidth / temp_maximum);
+		uint32_t temp_maximum = maximum >> bitshift;
+		uint32_t temp_value = value >> bitshift;
+		barposn = (uint32_t) (temp_value * barwidth / temp_maximum);
 	} else
-		barposn = (__uint32_t) (value * barwidth / maximum);
+		barposn = (uint32_t) (value * barwidth / maximum);
 	
 	if ((console_loglevel >= SUSPEND_ERROR) || (!draw_progress_bar))
 		return;
@@ -289,8 +289,8 @@ void text_update_progress(__uint32_t value, __uint32_t maximum, char *msg)
 	hide_cursor();
 }
 
-static void text_message(__uint32_t section, __uint32_t level,
-		__uint32_t normally_logged, char *msg)
+static void text_message(uint32_t section, uint32_t level,
+		uint32_t normally_logged, char *msg)
 {
 	if (section && !((1 << section) & suspend_debug))
 		return;
