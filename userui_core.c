@@ -209,7 +209,7 @@ static void toggle_reboot() {
 				 "Rebooting disabled."));
 }
 
-static void toggle_debug_state(key) {
+static void toggle_debug_state(int key) {
 	int bit = 0;
 	char message[80];
 
