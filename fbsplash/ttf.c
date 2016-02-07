@@ -28,7 +28,7 @@
 
 #include <ft2build.h>
 #include FT_FREETYPE_H
-#include <ftoutln.h>
+#include <freetype/ftoutln.h>
 
 #include "splash.h"
 
