@@ -29,7 +29,6 @@
 #include "../userui.h"
 
 int fb_fd, fbsplash_fd = -1, no_silent_image = 0;
-char *progress_text;
 static char rendermessage[512];
 static int lastloglevel;
 static unsigned long cur_value, cur_maximum, last_pos;
