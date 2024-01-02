@@ -101,8 +101,10 @@ static void text_prepare_status_real(int printalways, int clearbar, int level, c
 {
 	int y, i;
 
-	if (msg)
+	if (msg) {
 		strncpy(lastheader, msg, 512);
+		lastheader[511] = '\0';
+	}
 
 	if (console_loglevel >= SUSPEND_ERROR) {
 		if (!(suspend_action & (1 << SUSPEND_LOGALL)) || level == SUSPEND_UI_MSG)

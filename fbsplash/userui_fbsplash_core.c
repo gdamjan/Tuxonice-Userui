@@ -55,6 +55,7 @@ static void reset_silent_img() {
 		return;
 	memcpy((void*)silent_img.data, base_image, base_image_size);
 	strncpy(rendermessage, lastheader, 512);
+	rendermessage[511] = '\0';
 	render_objs((u8*)silent_img.data, NULL, 's', FB_SPLASH_IO_ORIG_USER, 0);
 	rendermessage[0] = '\0';
 }
@@ -244,6 +245,7 @@ static void fbsplash_update_silent_message() {
 
 static void fbsplash_message(u32 type, u32 level, u32 normally_logged, char *msg) {
 	strncpy(lastheader, msg, 512);
+	lastheader[511] = '\0';
 	if (console_loglevel >= SUSPEND_ERROR) {
 		if (!(suspend_action & (1 << SUSPEND_LOGALL)) || level == SUSPEND_UI_MSG)
 			printf("\n** %s\n", msg);
