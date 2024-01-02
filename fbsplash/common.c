@@ -181,7 +181,7 @@ int do_getpic(unsigned char origin, unsigned char do_cmds, char mode)
 	if (do_cmds) {
 		cmd_setpic(&verbose_img, origin);
 		free((u8*)verbose_img.data);
-		if (verbose_img.cmap.red);
+		if (verbose_img.cmap.red)
 			free(verbose_img.cmap.red);
 	}	
 #endif
